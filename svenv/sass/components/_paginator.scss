@@ -1,0 +1,29 @@
+@import '../lib/color';
+@import '../lib/grid';
+@import '../lib/typography';
+
+
+.paginator {
+  @include cols(12);
+  @include text-small();
+  display: flex;
+  float: left;
+  text-align: center;
+  margin: 20px 0;
+
+  .paginator__link {
+    @include cols(6);
+    display: inline-block;
+  }
+
+  .paginator__link--previous {
+    border-right: 1px dashed rgba(0,0,0,.14902);
+    padding-right: 5px;
+    text-align: right;
+  }
+
+  .paginator__link--next {
+    padding-left: 5px;
+    text-align: left;
+  }
+}

@@ -1,0 +1,15 @@
+$color-black: rgb(77, 77, 77);
+$color-white: #FFF;
+$color-grey: darken($color-white, 10);
+$color-grey-dark: darken($color-white, 30);
+$color-orange: #E4330E;
+
+
+$color-action-primary: $color-orange;
+$color-background: $color-grey;
+$color-border: $color-grey;
+$color-error: $color-orange;
+$color-panel: $color-white;
+$color-text: $color-black;
+$color-text-light: $color-grey-dark;
+$color-text-white: $color-white;

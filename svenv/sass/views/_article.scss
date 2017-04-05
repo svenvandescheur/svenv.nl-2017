@@ -1,0 +1,174 @@
+@import '../lib/color';
+@import '../lib/grid';
+@import '../lib/responsive';
+@import '../lib/typography';
+
+
+$article-breakpoint-spacing: $breakpoint-tablet;
+$article-color-background: $color-panel;
+$article-color-title: $color-text-white;
+$article-header-rows-mobile: 6;
+$article-header-rows-desktop: 12;
+$article-max-width: $breakpoint-laptop;
+$article-related-image-size-mobile: 1 * $row-height;
+$article-related-image-size-desktop: 2 * $row-height;
+
+
+.view-article {
+  .view-article__main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+  }
+
+  .view-article__header {
+    @include cols(12);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .view-article__heading {
+    @include text-heading();
+    font-size: 4rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    @media (min-width: $article-breakpoint-spacing) {
+      top: 25%;
+    }
+  }
+
+  .view-article__heading .view-article__link {
+    color: $article-color-title;
+  }
+
+  .view-article__back {
+    @include hpadding(1, 1);
+    position: absolute;
+    top: 100%;
+    transform: translate(0, -100%);
+
+    @media (min-width: $article-breakpoint-spacing) {
+      top: 25%;
+      transform: translate(0, -25%);
+    }
+  }
+
+  .view-article__header-image {
+    @include cols(12);
+    @include rows($article-header-rows-mobile);
+    object-fit: cover;
+
+    @media (min-width: $article-breakpoint-spacing) {
+      @include rows($article-header-rows-desktop);
+    }
+  }
+
+  .view-article__content {
+    @include rows(1, padding-left);
+    @include rows(1, padding-right);
+    @include vmargin($article-header-rows-mobile, 0);
+    @include vpadding(1, 1);
+    background: $article-color-background;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.14902);
+    box-sizing: border-box;
+    width: 100%;
+    //max-width: calc(1280px - 2 * #{$row-height});
+    max-width: 1100px;
+    position: relative;
+    z-indexL: 10;
+
+    @media (min-width: $article-breakpoint-spacing) {
+      @include rows(2, padding-left);
+      @include rows(2, padding-right);
+      @include vmargin($article-header-rows-desktop / 2, 0);
+    }
+  }
+
+  .view-article__content {
+    @include text-normal();
+  }
+
+  .codepen-embed {
+    @include rows(-1, margin-left);
+    width: calc(100% + 2 * #{$row-height});
+
+    @media (min-width: $article-breakpoint-spacing) {
+      @include rows(-2, margin-left);
+      width: calc(100% + 4 * #{$row-height});
+    }
+  }
+
+  .code-snippet {
+    @include rows(-1, margin-left);
+    width: calc(100% + 2 * #{$row-height});
+
+    @media (min-width: $article-breakpoint-spacing) {
+      @include rows(-2, margin-left);
+      width: calc(100% + 4 * #{$row-height});
+    }
+  }
+
+  .view-article__footer {
+    @include vmargin(1, 0);
+    @include text-medium();
+    text-align: center;
+  }
+
+  .view-article__image-notice {
+    @include cols(12);
+    display: block;
+  }
+
+  .view-article__related {
+    @include cols(12);
+    @include vmargin(1, 1);
+    @include text-medium();
+    list-style: none;
+    list-style-type: none!important;
+    margin-left: 0!important;
+
+    @media (min-width: $article-breakpoint-spacing) {
+      display: flex;
+    }
+  }
+
+  .view-article__related-item {
+    @include cols(12);
+    @include vmargin(0, 0.5);
+
+    @media (min-width: $article-breakpoint-spacing) {
+      @include vmargin(0, 0);
+    }
+  }
+
+  .view-article__link {
+    display: block;
+    align-items: center;
+    overflow: hidden;
+    line-height: $article-related-image-size-mobile;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @media (min-width: $article-breakpoint-spacing) {
+      line-height: $article-related-image-size-desktop;
+    }
+  }
+
+  .view-article__related-image {
+    width: $article-related-image-size-mobile!important;
+    height: $article-related-image-size-mobile;
+    object-fit: cover;
+    float: left;
+    margin: 0 20px 0 0!important;
+
+    @media (min-width: $article-breakpoint-spacing) {
+      width: $article-related-image-size-desktop!important;
+      height: $article-related-image-size-desktop;
+    }
+  }
+}

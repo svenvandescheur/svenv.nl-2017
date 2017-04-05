@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load blog_tags %}
+
+
+{% block body_class %}view-article{% endblock %}
+
+
+{% block content %}
+<main class="view-article__main">
+    <header class="view-article__header">
+        <h1 class="view-article__heading">
+            <a class="view-article__link" href="/">{{ request.site.site_name|capfirst }}</a>
+        </h1>
+
+        <a class="view-article__back button button--prev"  href="/">Home</a>
+        {% image page.image width-1680 class="view-article__header-image"  %}
+    </header>
+
+
+    <article class="view-article__content">
+        <h2 class="view-article__title">{{ page.title }}</h2>
+	    {{ page.body|richtext }}
+
+
+        <footer class="view-article__footer">
+            <em class="view-article__publication-date">Published on {{ page.go_live_at }}.</em>
+
+            {% if page.image.description %}
+                <em class="view-article__image-notice">Image: {{ page.image.description }}</em>
+            {% endif %}
+        </footer>
+
+        <ul class="view-article__related">
+            <li class="view-article__related-item">
+                {% get_previous_sibling page=page as previous_sibling %}
+                {% if previous_sibling %}
+                    <a class="view-article__link"
+                       href="{% pageurl previous_sibling %}">
+
+                        {% image previous_sibling.specific.image height-96 class="view-article__related-image"  %}
+                        {{ previous_sibling.title }}
+                    </a>
+                {% endif %}
+            </li>
+
+            <li class="view-article__related-item">
+                {% get_next_sibling page=page as next_sibling %}
+                {% if next_sibling %}
+                    <a class="view-article__link"
+                       href="{% pageurl next_sibling %}">
+
+                        {% image next_sibling.specific.image height-96 class="view-article__related-image"  %}
+                        {{ next_sibling.title }}
+                    </a>
+                {% endif %}
+            </li>
+        </ul>
+
+        {% if page.comments %}
+            <section class="disqus" id="disqus_thread"></section>
+        {% endif %}
+    </article>
+
+        {% get_next_sibling page=self as thingy %}
+
+</main>
+{% endblock %}

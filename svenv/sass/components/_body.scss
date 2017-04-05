@@ -1,0 +1,8 @@
+@import '../lib/grid';
+
+
+.body {
+  &.body--scrolled {
+    @include vmargin(1, 0);
+  }
+}

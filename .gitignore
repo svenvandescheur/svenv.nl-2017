@@ -1,0 +1,9 @@
+*.pyc
+
+.idea/
+
+node_modules/
+
+**/*.db
+src/media/
+src/static/

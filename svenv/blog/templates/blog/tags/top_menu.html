@@ -1,0 +1,20 @@
+<header class="navbar">
+    <h1 class="navbar__heading">
+        <a class="navbar__link" href="/">{{ request.site.site_name|capfirst }}</a>
+    </h1>
+
+    <nav class="navbar__nav">
+        <ul class="navbar__list">
+            {% for page in pages %}
+                <li class="navbar__list-item {% if page.active %}navbar__list-item--selected{% endif %}">
+                    <a class="navbar__link" href="{{ page.url }}">{{ page.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    <form class="navbar__form">
+        <label class="navbar__label" for="search">Search</label>
+        <input class="navbar__input" id="search" type="search" autocomplete="off" />
+    </form>
+</header>

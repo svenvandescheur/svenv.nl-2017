@@ -1,0 +1,150 @@
+@import '../lib/color';
+@import '../lib/grid';
+@import '../lib/responsive';
+@import '../lib/typography';
+
+
+$category-color-background: $color-panel;
+$category-color-pagination: $font-color-text-light;
+$category-color-pagination-active: $font-color-action-primary;
+$category-breakpoint_2: $breakpoint_tablet;
+$category-breakpoint_3: $breakpoint_laptop;
+$category-breakpoint_4: $breakpoint_laptop_l;
+
+
+.view-category {
+  .view-category__main {
+    display: table;
+    width: 100%;
+
+    &:after {
+      clear: both;
+      content: "";
+    }
+  }
+
+  .view-category__article {
+    @include vpadding(0, 0.5);
+    background: $category-color-background;
+    border-right: 1px dashed rgba(0,0,0,.14902);
+    box-sizing: border-box;
+    float: left;
+
+    &:hover {
+      border-left: 1px dashed rgba(0,0,0,.14902);
+      transition: all .2s;
+      transform: scale(1.01);
+    }
+
+    @media (min-width: $category-breakpoint_2) {
+      @include cols(6);
+    }
+
+    @media (min-width: $category-breakpoint_3) {
+      @include cols(4);
+    }
+
+    @media (min-width: $category-breakpoint_4) {
+      @include cols(3);
+    }
+  }
+
+  .view-category__header-image {
+    @include cols(12);
+    @include rows(6);
+    @include vmargin(0, 0.5);
+    object-fit: cover;
+  }
+
+  .view-category__article .view-category__title {
+    @include vmargin(0, 0);
+  }
+
+  .view-category__content {
+    @include rows(5);
+    @include text-normal();
+    overflow: hidden;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .view-category__body {
+    @include rows(2, max-height);
+    overflow: hidden;
+  }
+
+  .view-category__footer {
+    @include text-small();
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    position: absolute;
+    bottom: 0;
+    text-transform: uppercase;
+    width: calc(100% - 40px);
+  }
+
+  .view-category__publication-date {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .view-category__footer .view-category__link {
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .view-category__pagination {
+    @include vmargin(1, 0);
+    float: left;
+    width: 100%;
+  }
+
+  .view-category__pagination__list {
+    @include text-normal();
+    text-align: center;
+  }
+
+  .view-category__pagination__list-item {
+    @include rows(1, line-height);
+    display: inline-block;
+  }
+
+  .view-category__pagination__list-item  .view-category__pagination__link {
+    color: $category-color-pagination;
+    display: block;
+  }
+
+  .view-category__pagination__list-item  .view-category__pagination__link--active {
+    color: $category-color-pagination-active;
+  }
+
+  .view-category__pagination__list-item  .view-category__pagination__link--previous {
+    text-indent: -999rem;
+
+    &:before {
+      @include rows(1);
+      background: url('../img/angle-left-gray.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      content: "";
+      float: left;
+      width: 10px;
+    }
+  }
+
+  .view-category__pagination__list-item  .view-category__pagination__link--next {
+    text-indent: -999rem;
+
+    &:before {
+      @include rows(1);
+      background: url('../img/angle-right-gray.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      content: "";
+      float: left;
+      width: 10px;
+    }
+  }
+}

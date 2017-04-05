@@ -1,0 +1,32 @@
+$column-count: 12;
+$column-width: 100% / $column-count;
+$row-height: 48px;
+
+
+@mixin cols($cols, $property: width) {
+     #{$property}: $cols * $column-width;
+}
+
+@mixin rows($cols, $property: height) {
+     #{$property}: $cols * $row-height;
+}
+
+@mixin hmargin($cols-left, $cols-right) {
+     margin-left: $cols-left * $column-width;
+     margin-right: $cols-right * $column-width;
+}
+
+@mixin vmargin($rows-top, $rows-bottom) {
+     margin-top: $rows-top * $row-height;
+     margin-bottom: $rows-bottom * $row-height;
+}
+
+@mixin hpadding($cols-left, $cols-right) {
+     padding-left: $cols-left * $column-width;
+     padding-right: $cols-right * $column-width;
+}
+
+@mixin vpadding($rows-top, $rows-bottom) {
+     padding-top: $rows-top * $row-height;
+     padding-bottom: $rows-bottom * $row-height;
+}

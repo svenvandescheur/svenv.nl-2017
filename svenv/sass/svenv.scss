@@ -1,0 +1,11 @@
+@import 'lib/color';
+@import 'lib/reset';
+@import 'components/all';
+@import 'views/all';
+
+$screen-color-background: $color-grey;
+
+
+html {
+  background: $screen-color-background;
+}

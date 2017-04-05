@@ -1,0 +1,38 @@
+@import '../lib/color';
+@import '../lib/grid';
+@import '../lib/typography';
+
+
+$button-color-background: $color-action-primary;
+$button-color-text: $color-text-white;
+
+
+.button {
+  @include text-normal();
+  @include rows(1);
+  @include rows(1, line-height);
+  background: $button-color-background;
+  color: $button-color-text;
+  display: inline-block;
+  padding: 0 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background: darken($button-color-background, 10%);
+    //text-decoration: underline;
+  }
+
+  &.button--prev {
+    &:before {
+      @include rows(1);
+      background: url('../img/angle-left.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      content: "";
+      float: left;
+      width: 32px;
+    }
+  }
+}

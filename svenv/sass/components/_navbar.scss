@@ -1,0 +1,99 @@
+@import '../lib/color';
+@import '../lib/grid';
+@import '../lib/responsive';
+@import '../lib/typography';
+
+
+$navbar-breakpoint-logo: $breakpoint-tablet;
+$navbar-color-action-primary: $color-action-primary;
+$navbar-color-border: $color-border;
+$navbar-color-background: $color-background;
+$navbar-color-panel: $color-panel;
+
+
+.navbar {
+  @include rows(1);
+  @include rows(1, line-height);
+  background: $navbar-color-panel;
+  border: 1px solid $navbar-color-background;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  position: relative;
+  width: 100vw;
+  z-index: 10;
+
+  &.navbar--sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .navbar__heading {
+    @include text-heading();
+
+    .navbar__link {
+      color: transparent;
+      display: block;
+      width: 15px;
+
+      &:first-letter {
+        color: $navbar-color-action-primary;
+      }
+
+      @media (min-width: $navbar-breakpoint-logo) {
+        color: $navbar-color-action-primary;
+        width: auto;
+      }
+    }
+  }
+
+  .navbar__nav {
+    @include text-actions();
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .navbar__list {
+    display: flex;
+  }
+
+  .navbar__list-item {
+    margin-right: 20px;
+  }
+
+  .navbar__form {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar__label {
+    text-indent: -999rem;
+
+    &:before {
+      @include rows(1);
+      background: url('../img/search.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      content: "";
+      float: left;
+      width: 32px;
+    }
+  }
+
+  .navbar__input {
+    @include rows(0.75, line-height);
+    border: 0;
+    border-bottom: 1px solid $navbar-color-border;
+    font-size: 1.25rem;
+    outline: none;
+    transition: width 0.5s ease;
+    width: 0;
+
+    &:focus {
+      margin-left: 10px;
+      width: 150px;
+    }
+  }
+}

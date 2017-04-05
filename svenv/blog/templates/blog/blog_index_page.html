@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load blog_tags %}
+
+
+{% block body_class %}view-category{% endblock %}
+
+
+{% block content %}
+{% get_site_root as site_root %}
+{% top_menu parent=site_root calling_page=self %}
+
+
+<main class="view-category__main">
+    {% get_child_pages parent=self as page %}
+    {% for post in page %}
+        {% if post.specific.is_post %}
+            <section class="view-category__article">
+                <header class="view-category__header">
+                    <a href="{% pageurl post %}">
+                        {% image post.specific.image width-768 class="view-category__header-image"  %}
+                    </a>
+                </header>
+
+                <article class="view-category__content">
+                    <h3 class="view-category__title">
+                        <a href="{% pageurl post %}">{{ post.specific.title }}</a>
+                    </h3>
+
+                    <section class="view-category__body">
+                        {{ post.specific.search_description }}
+                    </section>
+
+                    <footer class="view-category__footer">
+                        <em class="view-category__publication-date">Published on {{ post.specific.go_live_at }}.</em>
+                        <a class="view-category__link"href="{% pageurl post %}">Read more</a>
+                    </footer>
+                </article>
+            </section>
+        {% endif %}
+    {% endfor %}
+
+    <footer class="paginator">
+        {% if page.has_previous %}
+            <a class="paginator__link paginator__link--previous" href="?page={{ page.previous_page_number }}">previous</a>
+        {% else %}
+            <span class="paginator__link paginator__link--previous paginator__link--disabled">previous</span>
+        {% endif %}
+
+        {% if page.has_next %}
+            <a class="paginator__link paginator__link--next" href="?page={{ page.next_page_number }}">next</a>
+        {% else %}
+            <span class="paginator__link paginator__link--next paginator__link--disabled">next</span>
+        {% endif %}
+    </footer>
+</main>
+{% endblock %}

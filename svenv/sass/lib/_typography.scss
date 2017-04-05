@@ -1,0 +1,151 @@
+@import 'color';
+@import 'grid';
+
+
+$font-color-action-primary: $color-action-primary;
+$font-color-text: $color-text;
+$font-color-text-light: $color-text-light;
+
+
+@font-face {
+  font-family: 'Lobster';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../font/Lobster-regular/Lobster-regular.eot');
+  src: url('../font/Lobster-regular/Lobster-regular.eot?#iefix') format('embedded-opentype'),
+       local('Lobster'),
+       local('Lobster-regular'),
+       url('../font/Lobster-regular/Lobster-regular.woff2') format('woff2'),
+       url('../font/Lobster-regular/Lobster-regular.woff') format('woff'),
+       url('../font/Lobster-regular/Lobster-regular.ttf') format('truetype'),
+       url('../font/Lobster-regular/Lobster-regular.svg#Lobster') format('svg');
+}
+
+
+@mixin text-actions() {
+  color: $font-color-text-light;
+  font-family: Helvetica;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+
+  a {
+    color: $font-color-text-light;
+    text-decoration: none;
+
+    &:hover {
+      color: $font-color-action-primary;
+    }
+  }
+}
+
+
+@mixin text-heading() {
+  color: $font-color-action-primary;
+  font-family: 'Lobster', cursive;
+  font-size: 1.5rem;
+
+  a {
+    color: $font-color-action-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+@mixin abstract-text() {
+  font-family: Helvetica;
+  font-weight: 300;
+  line-height: 1.5;
+
+  em {
+    font-style: italic;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  b, strong {
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @include vmargin(0, 0.5);
+    display: block;
+
+    a {
+      color: $font-color-text;
+
+      &:hover {
+        color: $font-color-action-primary;
+      }
+    }
+  }
+
+  h1 {
+    @include vmargin(1, 1);
+    font-size: 3rem;
+
+  }
+
+  h2 {
+    @include vmargin(1, 1);
+    font-size: 2.25rem;
+  }
+
+  h3, h4, h5, h6 {
+    font-size: 1.75rem;
+  }
+
+  img {
+    @include vmargin(0.5, 1);
+  }
+
+  p {
+    @include vmargin(0, 0.5);
+  }
+
+  ol, ul {
+    @include vmargin(1, 1);
+    @include hmargin(1, 0);
+    list-style-type: disc;
+
+    ol, ul {
+      @include hmargin(0.5, 0);
+      @include vmargin(0, 0);
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  a {
+    color: $font-color-action-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@mixin text-normal() {
+  @include abstract-text();
+  color: $font-color-text;
+  font-size: 1.25rem;
+}
+
+@mixin text-medium() {
+  @inlcude abstract-text();
+  color: $font-color-text-light;
+  font-size: 1rem;
+}
+
+@mixin text-small() {
+  @include abstract-text();
+  color: $font-color-text-light;
+  font-size: 0.75rem;
+}
