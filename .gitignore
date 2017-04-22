@@ -4,6 +4,6 @@
 
 node_modules/
 
-**/*.db
-src/media/
-src/static/
+**/*.sqlite3
+svenv/media/
+svenv/static/
