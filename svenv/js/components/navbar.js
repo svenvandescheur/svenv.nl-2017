@@ -1,9 +1,18 @@
-/**
- * Module containing classes for navbar functionality.
- * @module
- */
 import BEM from 'bem.js';
 import { Sticky } from '../lib/sticky';
+
+
+/** {string} representing the navbar. */
+const BLOCK_NAVBAR = 'navbar';
+
+/** {string} representing the search input. */
+const ELEMENT_INPUT = 'input';
+
+/** {HTMLElement} representing the navbar. */
+const NAVBAR = BEM.getBEMNode(BLOCK_NAVBAR);
+
+/** {HTMLElement} representing the search input. */
+export const INPUT = BEM.getBEMNode(BLOCK_NAVBAR, ELEMENT_INPUT);
 
 
 /**
@@ -16,27 +25,18 @@ class StickyNavbar {
      * Add Article to the page if required
      */
     constructor() {
-        /** {String} representing the navbar */
-        this.BLOCK_NAVBAR = 'navbar';
-
-        /** {HTMLElement} representing the navbar header */
-        this.NAVBAR = BEM.getBEMNode(this.BLOCK_NAVBAR);
-
-
-        if(this.NAVBAR) {
-            this.setUpStickyNavbar();
-        }
+        this.setUpStickyNavbar();
     }
 
     /**
      * Adds a parallax effect to this.HEADER
      */
     setUpStickyNavbar() {
-        console.log('hoij')
-        new Sticky(this.NAVBAR);
+        new Sticky(NAVBAR);
     }
 }
 
 
-// Initiate
-new StickyNavbar();
+if (NAVBAR) {
+    new StickyNavbar();
+}

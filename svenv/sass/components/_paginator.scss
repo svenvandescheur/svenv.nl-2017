@@ -9,7 +9,11 @@
   display: flex;
   float: left;
   text-align: center;
-  margin: 20px 0;
+  padding: 20px 0;
+
+  &.paginator--hidden {
+    display: none;
+  }
 
   .paginator__link {
     @include cols(6);
@@ -17,7 +21,7 @@
   }
 
   .paginator__link--previous {
-    border-right: 1px dashed rgba(0,0,0,.14902);
+    border-right: 1px solid rgba(0,0,0,.14902);
     padding-right: 5px;
     text-align: right;
   }

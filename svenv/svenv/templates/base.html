@@ -1,4 +1,15 @@
 {% load static wagtailuserbar %}
+
+
+{% comment %}
+    During the template rendering, we will occasionally check for "results/api_view" in context.
+    We do this do distinguish an API template result from a regular result.
+
+    This way, article template can be reused.
+{% endcomment %}
+
+
+{% if not results %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,8 +36,13 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
+{% endif %}
         {% block content %}{% endblock %}
-        <footer class="footer">You have reached the bottom of this page.</footer>
+{% if not results %}
+        {% block footer %}
+            <footer class="footer">You have reached the bottom of this page.</footer>
+        {% endblock %}
     </body>
     <script src="{% static 'js/svenv.js' %}"></script>
 </html>
+{% endif %}

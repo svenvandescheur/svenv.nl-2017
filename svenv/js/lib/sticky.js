@@ -1,7 +1,3 @@
-/**
- * Module containing functionality for sticky scrolling.
- * @module
- */
 import BEM from 'bem.js';
 
 

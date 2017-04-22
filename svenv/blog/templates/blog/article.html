@@ -22,11 +22,12 @@
 
     <article class="view-article__content">
         <h2 class="view-article__title">{{ page.title }}</h2>
-	    {{ page.body|richtext }}
-
+	    {% for block in page.body %}
+            {% include_block block %}
+        {% endfor %}
 
         <footer class="view-article__footer">
-            <em class="view-article__publication-date">Published on {{ page.go_live_at }}.</em>
+            <em class="view-article__publication-date">Published on {{ page.go_live_at }}</em>
 
             {% if page.image.description %}
                 <em class="view-article__image-notice">Image: {{ page.image.description }}</em>

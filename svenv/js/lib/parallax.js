@@ -1,7 +1,3 @@
-/**
- * Module containing functionality for parallax scrolling.
- * @module
- */
 import BEM from 'bem.js';
 
 

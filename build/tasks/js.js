@@ -12,5 +12,6 @@ var webpackConfig = require('../../webpack.config.js');
 gulp.task('js', function() {
     return gulp.src('')
         .pipe(webpack(webpackConfig))
+            .on('error', function handleError() { this.emit('end'); })
         .pipe(gulp.dest(webpackConfig.output.path));
 });

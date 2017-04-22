@@ -47,7 +47,7 @@ $article-related-image-size-desktop: 2 * $row-height;
   }
 
   .view-article__back {
-    @include hpadding(1, 1);
+    padding: 0 96px;
     position: absolute;
     top: 100%;
     transform: translate(0, -100%);
@@ -117,6 +117,10 @@ $article-related-image-size-desktop: 2 * $row-height;
     @include vmargin(1, 0);
     @include text-medium();
     text-align: center;
+  }
+
+  .view-article__publication-date {
+    font-style: normal!important;
   }
 
   .view-article__image-notice {

@@ -5,9 +5,7 @@
 
 .footer {
   @include cols(12);
-  @include rows(1);
   @include text-small();
-  @include rows(1, line-height);
   padding: 20px 0;
   text-align: center;
 }

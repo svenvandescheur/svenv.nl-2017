@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load blog_tags %}
+
+
+{% block body_class %}view-category{% endblock %}
+
+
+{% block content %}
+
+
+{% comment %}
+    During the template rendering, we will occasionally check for "results/api_view" in context.
+    We do this do distinguish an API template result from a regular result.
+
+    This way, article template can be reused.
+{% endcomment %}
+
+
+{% with results as api_view %}
+
+    {% if not api_view %}
+        {% get_site_root as site_root %}
+        {% top_menu parent=site_root calling_page=self %}
+    {% endif %}
+
+
+    <main class="view-category__main" data-category="{{ self.id }}" data-page="{{ request.GET.page|default:1 }}">
+        {% if not api_view %}
+            {% get_child_pages parent=self as results %}
+        {% endif %}
+
+        {% for post in results %}
+            {% if post.is_post %}
+                <section class="view-category__article">
+                    <header class="view-category__header">
+                        <a href="{{ post.url }}">
+                            {% if not api_view %}
+                                {% image post.image width-768 class="view-category__header-image"  %}
+                            {% else %}
+                                    <img alt="{{ post.title}}" class="view-category__header-image" src="{{ post.image }}" />
+                             {% endif %}
+                        </a>
+                    </header>
+
+                    <article class="view-category__content">
+                        <h3 class="view-category__title">
+                            <a href="{{ post.url }}">{{ post.title }}</a>
+                        </h3>
+
+                        <section class="view-category__body">
+                            {{ post.search_description|safe }}
+                        </section>
+
+                        <footer class="view-category__footer">
+                            <em class="view-category__publication-date">Published on {{ post.go_live_at }}</em>
+                            <a class="view-category__link"href="{{ post.url }}">Read more</a>
+                        </footer>
+                    </article>
+                </section>
+            {% endif %}
+        {% endfor %}
+
+
+        {% if not api_view %}
+            <footer class="paginator">
+                {% if results.has_previous %}
+                    <a class="paginator__link paginator__link--previous" href="?page={{ results.previous_page_number }}">previous</a>
+                {% else %}
+                    <span class="paginator__link paginator__link--previous paginator__link--disabled">previous</span>
+                {% endif %}
+
+                {% if results.has_next %}
+                    <a class="paginator__link paginator__link--next" href="?page={{ results.next_page_number }}">next</a>
+                {% else %}
+                    <span class="paginator__link paginator__link--next paginator__link--disabled">next</span>
+                {% endif %}
+            </footer>
+        {% endif %}
+    </main>
+{% endwith %}
+{% endblock %}
+
+
+{% block footer %}{% endblock %}

@@ -1,7 +1,3 @@
-/**
- * Module containing classes for Disqus functionality.
- * @module
- */
 import BEM from 'bem.js';
 
 

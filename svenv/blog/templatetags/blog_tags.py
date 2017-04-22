@@ -1,7 +1,7 @@
 from django import template
 from django.core.paginator import Paginator
 
-from ..models import BlogPage
+from ..models import Article
 
 register = template.Library()
 
@@ -28,14 +28,7 @@ def get_paginator(context, parent):
     """
     Returns a configured paginator with children of parent.
     """
-
-    children = parent\
-        .get_descendants()\
-        .live()\
-        .type(BlogPage)\
-        .order_by('-go_live_at')
-
-
+    children = Article.objects.article_descendants(parent)
     return Paginator(children, 12)
 
 
@@ -96,7 +89,7 @@ def top_menu(context, parent, calling_page=None):
     pages = parent\
         .get_descendants()\
         .live()\
-        .in_menu();
+        .in_menu()
 
     for page in pages:
         page.active = (calling_page.url.startswith(page.url))

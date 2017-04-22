@@ -3,13 +3,22 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-
+from rest_framework import routers
 from search import views as search_views
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 
+from blog.views import BlogPageViewSet
+
+
+router = routers.DefaultRouter()
+router.register(r'articles', BlogPageViewSet, base_name='blog-posts')
+
+
 urlpatterns = [
+    url(r'^api/v1/', include(router.urls)),
+
     url(r'^django-admin/', include(admin.site.urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),
