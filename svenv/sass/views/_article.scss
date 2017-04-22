@@ -175,4 +175,19 @@ $article-related-image-size-desktop: 2 * $row-height;
       height: $article-related-image-size-desktop;
     }
   }
+
+  //
+  // WYSIWYG content
+  //
+
+  img {
+    display: block;
+    margin: auto;
+  }
+
+  img[alt^=avatar] {  // Ugh!
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+  }
 }

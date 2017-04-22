@@ -579,6 +579,15 @@ table {
       width: 96px !important;
       height: 96px; } }
 
+.view-article img {
+  display: block;
+  margin: auto; }
+
+.view-article img[alt^=avatar] {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px; }
+
 @font-face {
   font-family: 'Lobster';
   font-weight: 400;

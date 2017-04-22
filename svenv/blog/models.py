@@ -1,7 +1,8 @@
 from django.db import models
+from django.db.models import BooleanField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailcore.models import Page, PageManager
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
@@ -52,7 +53,7 @@ class Article(Page):
         related_name='+'
     )
 
-    is_post = True
+    is_post = BooleanField(default=True)
     objects = ArticleManager()
 
     search_fields = Page.search_fields + [
@@ -63,5 +64,6 @@ class Article(Page):
         ImageChooserPanel('image'),
         StreamFieldPanel('body'),
         FieldPanel('comments'),
+        FieldPanel('is_post'),
     ]
 

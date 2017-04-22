@@ -27,13 +27,16 @@
         {% endfor %}
 
         <footer class="view-article__footer">
-            <em class="view-article__publication-date">Published on {{ page.go_live_at }}</em>
+            {% if page.is_post %}
+                <em class="view-article__publication-date">Published on {{ page.go_live_at }}</em>
+            {% endif %}
 
             {% if page.image.description %}
                 <em class="view-article__image-notice">Image: {{ page.image.description }}</em>
             {% endif %}
         </footer>
 
+        {% if page.is_post %}
         <ul class="view-article__related">
             <li class="view-article__related-item">
                 {% get_previous_sibling page=page as previous_sibling %}
@@ -59,6 +62,7 @@
                 {% endif %}
             </li>
         </ul>
+        {% endif %}
 
         {% if page.comments %}
             <section class="disqus" id="disqus_thread"></section>
