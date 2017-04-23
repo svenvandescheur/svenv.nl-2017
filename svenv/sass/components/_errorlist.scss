@@ -1,0 +1,22 @@
+@import '../lib/color';
+@import '../lib/grid';
+@import '../lib/typography';
+
+
+$errorlist-color-error: $color-error;
+
+ul.errorlist {
+  margin: 0!important;
+
+  li {
+    @include rows(1);
+    background-color: lighten($errorlist-color-error, 30%);
+    border: 1px solid;
+    box-sizing: border-box;
+    color: $errorlist-color-error;
+    list-style: none;
+    margin: 0!important;
+    margin-bottom: 0.5 * $row-height!important;
+    padding: 10px;
+  }
+}

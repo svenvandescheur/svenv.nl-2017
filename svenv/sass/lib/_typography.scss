@@ -139,7 +139,7 @@ $font-color-text-light: $color-text-light;
 }
 
 @mixin text-medium() {
-  @inlcude abstract-text();
+  @include abstract-text();
   color: $font-color-text-light;
   font-size: 1rem;
 }

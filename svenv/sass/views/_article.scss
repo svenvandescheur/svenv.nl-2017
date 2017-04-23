@@ -5,7 +5,9 @@
 
 
 $article-breakpoint-spacing: $breakpoint-tablet;
+$article-breakpoint-split: $breakpoint-tablet;
 $article-color-background: $color-panel;
+$article-color-border: $color-border;
 $article-color-title: $color-text-white;
 $article-header-rows-mobile: 6;
 $article-header-rows-desktop: 12;
@@ -189,5 +191,45 @@ $article-related-image-size-desktop: 2 * $row-height;
     width: 200px;
     height: 200px;
     border-radius: 100px;
+  }
+
+  form p {
+    @media (min-width: $article-breakpoint-split) {
+      display: flex;
+    }
+  }
+
+  input, label, textarea {
+    @include rows(1, line-height);
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    display: block;
+    outline: none;
+    width: 100%;
+
+    @media (min-width: $article-breakpoint-split) {
+      width: 50%;
+    }
+  }
+
+  input, textarea {
+    border: 1px solid $article-color-border;
+    font-size: 1em;
+    padding: 0 10px;
+  }
+
+  textarea {
+    @include rows(2);
+    line-height: 1.5;
+    transition: height 0.3s ease;
+
+    &:focus {
+      @include rows(4);
+    }
+  }
+
+  .button {
+    margin: auto;
   }
 }

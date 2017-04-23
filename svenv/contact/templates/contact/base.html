@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load blog_tags %}
+{% load static %}
+
+
+{% block body_class %}view-article{% endblock %}
+
+
+{% block content %}
+<main class="view-article__main">
+    <header class="view-article__header">
+        <h1 class="view-article__heading">
+            <a class="view-article__link" href="/">{{ request.site.site_name|capfirst }}</a>
+        </h1>
+
+        <a class="view-article__back button button--prev"  href="/">Home</a>
+        <img alt="contact background image" class="view-article__header-image" src="{% static 'contact/contact-background.png' %}" />
+    </header>
+
+
+    {% block body %}
+    {% endblock %}
+</main>
+{% endblock %}

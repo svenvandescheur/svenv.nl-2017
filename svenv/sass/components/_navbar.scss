@@ -63,6 +63,10 @@ $navbar-color-panel: $color-panel;
     margin-right: 20px;
   }
 
+  .navbar__link {
+    white-space: nowrap;
+  }
+
   .navbar__form {
     display: flex;
     align-items: center;
@@ -88,7 +92,7 @@ $navbar-color-panel: $color-panel;
     border-bottom: 1px solid $navbar-color-border;
     font-size: 1.25rem;
     outline: none;
-    transition: width 0.5s ease;
+    transition: width 0.3s ease;
     width: 0;
 
     &:focus {
