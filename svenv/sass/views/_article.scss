@@ -232,4 +232,26 @@ $article-related-image-size-desktop: 2 * $row-height;
   .button {
     margin: auto;
   }
+
+  .codehilite {
+    @include rows(-1, left);
+    @include vmargin(0, 0.5);
+    position: relative;
+    width: calc(100% + #{2 * $row-height});
+
+    @media (min-width: $article-breakpoint-spacing) {
+      @include rows(-2, left);
+      width: calc(100% + #{4 * $row-height});
+    }
+
+    code {
+      @include rows(1, padding-left);
+      @include rows(1, padding-right);
+
+      @media (min-width: $article-breakpoint-spacing) {
+        @include rows(2, padding-left);
+        @include rows(2, padding-right);
+      }
+    }
+  }
 }
