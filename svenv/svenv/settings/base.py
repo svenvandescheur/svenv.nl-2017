@@ -2,6 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 
+
+ALLOWED_HOSTS = ('localhost', 'svenv.nl', 'www.svenv.nl', 'app1.svenv.nl', 'app2.svenv.nl')
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
