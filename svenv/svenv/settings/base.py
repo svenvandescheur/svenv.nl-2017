@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import os
 
 
-ALLOWED_HOSTS = ['localhost', 'svenv.nl', 'www.svenv.nl', 'app1.svenv.nl', 'app2.svenv.nl']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'svenv.nl', 'www.svenv.nl', 'app1.svenv.nl', 'app2.svenv.nl']
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -109,3 +109,23 @@ ADMINS = [('Sven van de Scheur', 'svenvandescheur@gmail.com')]
 CONTACT_MAIL_FROM = 'noreply@svenv.nl'
 CONTACT_RECIPIENTS = s = ['{} <{}>'.format(r[0], r[1]) for r in ADMINS]
 CONTACT_SUBJECT = 'Message from {}'.format(WAGTAIL_SITE_NAME)
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/path/to/django/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
