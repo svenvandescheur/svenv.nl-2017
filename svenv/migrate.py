@@ -82,7 +82,7 @@ pattern_image = re.compile('blog.image')
 pattern_category = re.compile('blog.category')
 pattern_post = re.compile('blog.post')
 blog_items = []
-home = Page.objects.get(pk=4)
+home = Page.objects.get(pk=3)
 
 
 for item in data:
@@ -98,11 +98,11 @@ categories = [page for page in blog_items if pattern_category.match(page['model'
 posts = [page for page in blog_items if pattern_post.match(page['model'])]
 
 
-# for image in images:
-#     fields = image['fields']
-#     fields['url'] = fields['url'].replace('media/', '')
-#     wagtail_image = Image(pk=image['pk'], title=fields['title'], file=fields['url'])
-#     wagtail_image.save()
+for image in images:
+    fields = image['fields']
+    fields['url'] = fields['url'].replace('media/', '')
+    wagtail_image = Image(pk=image['pk'], title=fields['title'], file=fields['url'])
+    wagtail_image.save()
 
 
 Category.objects.exclude(pk=home.pk).delete()
