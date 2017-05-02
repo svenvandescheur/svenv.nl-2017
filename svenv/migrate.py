@@ -82,7 +82,7 @@ pattern_image = re.compile('blog.image')
 pattern_category = re.compile('blog.category')
 pattern_post = re.compile('blog.post')
 blog_items = []
-home = Page.objects.get(pk=3)
+home = Page.objects.get(pk=4)
 
 
 for item in data:
