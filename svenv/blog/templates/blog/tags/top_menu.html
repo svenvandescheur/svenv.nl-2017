@@ -7,7 +7,7 @@
         <ul class="navbar__list">
             {% for page in pages %}
                 <li class="navbar__list-item {% if page.active %}navbar__list-item--selected{% endif %}">
-                    <a class="navbar__link" href="{{ page.url }}">{{ page.title }}</a>
+                    <a class="navbar__link" href="{{ page.url }}">{{ page.seo_title|default:page.title }}</a>
                 </li>
             {% endfor %}
         </ul>
