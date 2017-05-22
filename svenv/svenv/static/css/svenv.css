@@ -377,6 +377,8 @@ ul.errorlist {
     position: fixed;
     top: 0;
     left: 0; }
+    .navbar.navbar--sticky + * {
+      margin-top: 40px; }
   .navbar .navbar__heading {
     color: #E4330E;
     font-family: 'Lobster', cursive;
@@ -436,11 +438,13 @@ ul.errorlist {
     border: 0;
     border-bottom: 1px solid #e6e6e6;
     font-size: 1.25rem;
+    opacity: 0;
     outline: none;
     transition: width 0.3s ease;
     width: 0; }
     .navbar .navbar__input:focus {
       margin-left: 10px;
+      opacity: 1;
       width: 150px; }
 
 @font-face {

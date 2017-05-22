@@ -28,6 +28,10 @@ $navbar-color-panel: $color-panel;
     position: fixed;
     top: 0;
     left: 0;
+
+    &+* {
+      @include vmargin(1, 0);
+    }
   }
 
   .navbar__heading {
@@ -91,12 +95,14 @@ $navbar-color-panel: $color-panel;
     border: 0;
     border-bottom: 1px solid $navbar-color-border;
     font-size: 1.25rem;
+    opacity: 0;
     outline: none;
     transition: width 0.3s ease;
     width: 0;
 
     &:focus {
       margin-left: 10px;
+      opacity: 1;
       width: 150px;
     }
   }

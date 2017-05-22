@@ -1,6 +1,3 @@
-import BEM from 'bem.js';
-
-
 /**
  * Class representing functionality for parallax scrolling.
  * @class
