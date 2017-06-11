@@ -9,7 +9,7 @@ const BLOCK_NAVBAR = 'navbar';
 const ELEMENT_INPUT = 'input';
 
 /** {HTMLElement} representing the navbar. */
-const NAVBAR = BEM.getBEMNode(BLOCK_NAVBAR);
+export const NAVBAR = BEM.getBEMNode(BLOCK_NAVBAR);
 
 /** {HTMLElement} representing the search input. */
 export const INPUT = BEM.getBEMNode(BLOCK_NAVBAR, ELEMENT_INPUT);

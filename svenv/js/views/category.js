@@ -1,5 +1,5 @@
 import BEM from 'bem.js';
-import { INPUT } from '../components/navbar';
+import { NAVBAR, INPUT } from '../components/navbar';
 import ArticleConsumer from '../data/article';
 import { Parallax } from '../lib/parallax';
 
@@ -14,6 +14,9 @@ const ELEMENT_MAIN = 'main';
 
 /** {string} representing the hidden state. */
 const MODIFIER_HIDDEN = 'hidden';
+
+/** {string} representing the search state. */
+const MODIFIER_SEARCH = 'search';
 
 /** {HTMLElement} representing the view. */
 const VIEW = BEM.getBEMNode(BLOCK_VIEW);
@@ -182,6 +185,8 @@ export class CategoryView {
      * Configures the search input.
      */
     setUpSearch() {
+        INPUT.addEventListener('focus', BEM.addModifier.bind(BEM, NAVBAR, MODIFIER_SEARCH));
+        INPUT.addEventListener('blur', BEM.removeModifier.bind(BEM, NAVBAR, MODIFIER_SEARCH));
         INPUT.addEventListener('input', this.search.bind(this));
     }
 

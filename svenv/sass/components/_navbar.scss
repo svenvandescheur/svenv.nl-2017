@@ -5,6 +5,7 @@
 
 
 $navbar-breakpoint-logo: $breakpoint-tablet;
+$navbar-breakpoint-search: $breakpoint-tablet;
 $navbar-color-action-primary: $color-action-primary;
 $navbar-color-border: $color-border;
 $navbar-color-background: $color-background;
@@ -23,6 +24,12 @@ $navbar-color-panel: $color-panel;
   position: relative;
   width: 100vw;
   z-index: 10;
+
+  &.navbar--search .navbar__list {
+    @media (max-width: $navbar-breakpoint-search) {
+      display: none;
+    }
+  }
 
   &.navbar--sticky {
     position: fixed;
@@ -92,6 +99,7 @@ $navbar-color-panel: $color-panel;
 
   .navbar__input {
     @include rows(0.75, line-height);
+    -webkit-appearance: none;
     border: 0;
     border-bottom: 1px solid $navbar-color-border;
     font-size: 1.25rem;
