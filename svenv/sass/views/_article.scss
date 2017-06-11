@@ -71,8 +71,8 @@ $article-related-image-size-desktop: 2 * $row-height;
   }
 
   .view-article__content {
-    @include rows(1, padding-left);
-    @include rows(1, padding-right);
+    @include rows(0.5, padding-left);
+    @include rows(0.5, padding-right);
     @include vmargin($article-header-rows-mobile, 0);
     @include vpadding(1, 1);
     background: $article-color-background;
@@ -96,8 +96,8 @@ $article-related-image-size-desktop: 2 * $row-height;
   }
 
   .codepen-embed {
-    @include rows(-1, margin-left);
-    width: calc(100% + 2 * #{$row-height});
+    @include rows(-0.5, margin-left);
+    width: calc(100% + 1 * #{$row-height});
 
     @media (min-width: $article-breakpoint-spacing) {
       @include rows(-2, margin-left);
@@ -106,8 +106,8 @@ $article-related-image-size-desktop: 2 * $row-height;
   }
 
   .code-snippet {
-    @include rows(-1, margin-left);
-    width: calc(100% + 2 * #{$row-height});
+    @include rows(-0.5, margin-left);
+    width: calc(100% + 1 * #{$row-height});
 
     @media (min-width: $article-breakpoint-spacing) {
       @include rows(-2, margin-left);
@@ -185,6 +185,7 @@ $article-related-image-size-desktop: 2 * $row-height;
   img {
     display: block;
     margin: auto;
+    max-width: 100%;
   }
 
   img[alt^=avatar] {  // Ugh!
@@ -234,10 +235,10 @@ $article-related-image-size-desktop: 2 * $row-height;
   }
 
   .codehilite {
-    @include rows(-1, left);
+    @include rows(-0.5, left);
     @include vmargin(0, 0.5);
     position: relative;
-    width: calc(100% + #{2 * $row-height});
+    width: calc(100% + #{1 * $row-height});
 
     @media (min-width: $article-breakpoint-spacing) {
       @include rows(-2, left);
@@ -245,8 +246,8 @@ $article-related-image-size-desktop: 2 * $row-height;
     }
 
     code {
-      @include rows(1, padding-left);
-      @include rows(1, padding-right);
+      @include rows(0.5, padding-left);
+      @include rows(0.5, padding-right);
 
       @media (min-width: $article-breakpoint-spacing) {
         @include rows(2, padding-left);
