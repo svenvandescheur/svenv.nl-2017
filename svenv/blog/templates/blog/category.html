@@ -26,6 +26,7 @@
     {% endif %}
 
 
+
     <main class="view-category__main" data-category="{{ self.id }}" data-page="{{ request.GET.page|default:1 }}">
         {% if not api_view %}
             {% get_child_pages parent=self as results %}
@@ -37,7 +38,7 @@
                     <header class="view-category__header">
                         <a href="{{ post.url }}">
                             {% if not api_view %}
-                                {% image post.image width-768 class="view-category__header-image"  %}
+                                {% image post.image width-425 class="view-category__header-image"  %}
                             {% else %}
                                     <img alt="{{ post.title}}" class="view-category__header-image" src="{{ post.image }}" />
                              {% endif %}
