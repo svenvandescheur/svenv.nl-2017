@@ -18,7 +18,7 @@ gulp.task('sass', function() {
     gulp.src(paths.sassSrc)
         // Compiles sass to css
         .pipe(sass({
-            outputStyle: 'minified',
+            outputStyle: 'compressed',
         })
         .on('error', sass.logError))
 
