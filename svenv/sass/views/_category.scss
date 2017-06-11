@@ -74,9 +74,10 @@ $category-breakpoint_4: $breakpoint_laptop_l;
 
   .view-category__footer {
     @include text-small();
+    background-color: $category-color-background;
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    padding-top: 20px;
     position: absolute;
     bottom: 0;
     text-transform: uppercase;
