@@ -18,6 +18,10 @@ export default class ArticleConsumer extends Consumer {
      */
     constructor(endpoint='/api/v1/articles/', objectClass=Article) {
         super(endpoint, objectClass);
+
+        this.defaultHeaders = {
+            'Accept': 'text/html',
+        };
     }
 
     /**

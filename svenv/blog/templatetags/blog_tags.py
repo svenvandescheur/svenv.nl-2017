@@ -6,7 +6,7 @@ from ..models import Article
 register = template.Library()
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_site_root(context):
     """
     Returns the root page by looking in the request for the current site.
@@ -14,7 +14,7 @@ def get_site_root(context):
     return context['request'].site.root_page
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_child_pages(context, parent):
     """
     Return all children of parent.
@@ -32,7 +32,7 @@ def get_paginator(context, parent):
     return Paginator(children, 12)
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_previous_sibling(page):
     """
     Returns the previous sibling.
@@ -45,7 +45,7 @@ def get_previous_sibling(page):
         return get_sibling_if_exists(siblings, previous_sibling_index)
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_next_sibling(page):
     """
     Returns the next sibling.

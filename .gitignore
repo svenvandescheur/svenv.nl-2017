@@ -4,6 +4,7 @@
 
 node_modules/
 
+svenv/svenv/settings/local.py
 **/*.sqlite3
 svenv/media/
 svenv/static/
